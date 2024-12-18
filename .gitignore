@@ -1,0 +1,25 @@
+# Ignore all PNG files
+*.png
+
+# macOS system files
+.DS_Store
+
+# Build and intermediate files
+build/
+*.xcworkspace
+xcuserdata/
+DerivedData/
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
