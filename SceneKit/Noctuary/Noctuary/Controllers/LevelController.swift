@@ -18,23 +18,26 @@ class LevelController {
                 let node: SCNNode?
                 
                 switch cell {
-                    //                case 0:
-                    //                    let floorNode = SCNPlane(width: 1, height: 1)
-                    //                    let floorMaterial = SCNMaterial()
-                    //
-                    //                    floorMaterial.diffuse.contents = colorForPlatform(.brown)
-                    //                    floorMaterial.normal.contents = loadTexture(named: "plaster normal")
-                    //                    floorMaterial.roughness.contents = loadTexture(named: "plaster roughness")
-                    //                    floorMaterial.isDoubleSided = true
-                    //
-                    //                    floorNode.firstMaterial = floorMaterial
-                    //
-                    //                    node = SCNNode(geometry: floorNode)
-                    //                    node?.name = "floor"
+//                case 0:
+//                    let floor = SCNBox(width: 1, height: 0.1, length: 1, chamferRadius: 0)
+//                    let floorMaterial = SCNMaterial()
+//                    
+//                    floorMaterial.diffuse.contents = colorForPlatform(.brown)
+//                    floorMaterial.normal.contents = loadTexture(named: "plaster normal")
+//                    floorMaterial.roughness.contents = loadTexture(named: "plaster roughness")
+//                    
+//                    floor.firstMaterial = floorMaterial
+//                    
+//                    let floorNode = SCNNode(geometry: floor)
+//                    floorNode.name = "floor"
+//                    floorNode.position.y = -0.5
+//                    
+//                    node = floorNode
                 case 1:
                     let wallNode = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
                     let wallMaterial = SCNMaterial()
                     
+                    wallMaterial.diffuse.contents = colorForPlatform(.white)
                     wallMaterial.normal.contents = loadTexture(named: "plaster normal")
                     wallMaterial.roughness.contents = loadTexture(named: "plaster roughness")
                     
@@ -48,13 +51,32 @@ class LevelController {
                     let lampLight = SCNLight()
                     lampLight.type = .omni
                     lampLight.color = colorForPlatform(.gray)
-                    lampLight.intensity = 60
+                    lampLight.intensity = 42
                     
                     let lampNode = SCNNode()
                     lampNode.light = lampLight
                     lampNode.name = "houseLamp"
                     lampNode.position = SCNVector3(0, 1, 0)
-                                        
+                    
+                    node = lampNode
+                case 4:
+                    let note = SCNBox(width: 0.1, height: 0.2, length: 0.02, chamferRadius: 0)
+                    let noteNode = SCNNode(geometry: note)
+                    noteNode.name = "note"
+                    
+                    node = noteNode
+                case 5:
+                    let lampLight = SCNLight()
+                    lampLight.type = .omni
+                    lampLight.color = colorForPlatform(.white)
+                    lampLight.intensity = 8
+                    lampLight.temperature = 87
+                    
+                    let lampNode = SCNNode()
+                    lampNode.light = lampLight
+                    lampNode.name = "houseLamp"
+                    lampNode.position = SCNVector3(0, 1, 0)
+                    
                     node = lampNode
                 case 9:
                     let doorGeometry = SCNBox(width: 1, height: 1, length: 1, chamferRadius: 0)
@@ -67,9 +89,11 @@ class LevelController {
                 
                 if let node = node {
 #if os(iOS) || os(tvOS) || os(visionOS)
-                    node.position = SCNVector3(x: Float(columnIndex), y: 0, z: Float(rowIndex))
+                    node.position = SCNVector3(x: Float(columnIndex), y: node.position.y, z: Float(rowIndex))
+                    
 #elseif os(macOS)
-                    node.position = SCNVector3(x: CGFloat(columnIndex), y: 0, z: CGFloat(rowIndex))
+                    node.position = SCNVector3(x: CGFloat(columnIndex), y: node.position.y, z: CGFloat(rowIndex))
+                    
 #endif
                     scene.rootNode.addChildNode(node)
                 }
@@ -77,9 +101,39 @@ class LevelController {
         }
     }
     
+    func createFloorExcludingWalls(gridSize: Int) {
+        for x in 0..<gridSize {
+            for z in 0..<gridSize {
+                // Determine if the current position has a wall
+#if os(macOS)
+                let currentPosition = SCNVector3(CGFloat(x), -0.5, CGFloat(z))
+#else
+                let currentPosition = SCNVector3(Float(x), -0.5, Float(z))
+#endif
+                
+                // Create the floor
+                let floor = SCNBox(width: 1, height: 0.1, length: 1, chamferRadius: 0)
+                let floorMaterial = SCNMaterial()
+                
+                floorMaterial.diffuse.contents = colorForPlatform(.brown)
+                floorMaterial.normal.contents = loadTexture(named: "plaster normal")
+                floorMaterial.roughness.contents = loadTexture(named: "plaster roughness")
+                
+                floor.firstMaterial = floorMaterial
+                
+                let floorNode = SCNNode(geometry: floor)
+                floorNode.name = "floor"
+                floorNode.position = currentPosition
+                
+                // Add the floor node to the scene
+                scene.rootNode.addChildNode(floorNode)
+            }
+        }
+    }
+    
     func clearLevel() {
         scene.rootNode.childNodes.forEach { node in
-            if node.name == "wall" || node.name == "enemy" || node.name == "coin" || node.name == "door" || node.name == "light" {
+            if node.name == "wall" || node.name == "floor" || node.name == "note" || node.name == "door" || node.name == "light" {
                 node.removeFromParentNode()
             }
         }
@@ -224,7 +278,7 @@ class LevelController {
     
     func loadTexture(named textureName: String) -> Any {
 #if os(iOS) || os(tvOS) || os(visionOS)
-        return UIImage(named: textureName)
+        return UIImage(named: textureName)!
 #elseif os(macOS)
         return NSImage(named: textureName)!
 #endif
@@ -244,41 +298,41 @@ struct Edge {
 var levels: [[[Int]]] = [
     [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 0, 3, 0, 0, 4, 3, 0, 0, 1, 1, 0, 3, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1],
-        [1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 3, 1, 0, 0, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 4, 3, 0, 5, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1],
+        [1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
         [1, 0, 0, 0, 1, 1, 1, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 2, 1, 1, 1, 1, 1, 3, 4, 4, 0, 0, 0, 0, 3, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 4, 0, 0, 0, 1, 1, 0, 1, 0, 1],
-        [1, 1, 1, 1, 1, 1, 0, 0, 0, 4, 4, 4, 0, 0, 1, 1, 1, 1, 3, 1],
-        [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 4, 0, 0, 1, 1, 0, 0, 0, 1],
-        [1, 0, 0, 1, 1, 1, 1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1],
-        [1, 4, 0, 0, 0, 1, 1, 0, 0, 4, 0, 4, 0, 1, 1, 0, 1, 1, 0, 1],
-        [1, 4, 4, 0, 0, 0, 0, 0, 4, 0, 4, 4, 0, 1, 1, 1, 1, 0, 4, 1],
-        [1, 4, 4, 0, 4, 4, 0, 0, 4, 4, 0, 4, 0, 1, 1, 1, 1, 0, 0, 1],
-        [1, 0, 4, 4, 0, 4, 0, 0, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1],
-        [1, 3, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 0, 0, 4, 0, 3, 0, 4, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 0, 4, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-        [1, 1, 0, 4, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 3, 4, 4, 4, 0, 0, 1, 0, 0, 0, 0, 4, 4, 4, 3, 0, 9],
+        [1, 0, 2, 1, 1, 1, 1, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1],
+        [1, 1, 1, 1, 1, 1, 0, 0, 0, 4, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1],
+        [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+        [1, 0, 0, 1, 1, 1, 1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 4, 0, 0, 0, 1, 1, 0, 0, 4, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1],
+        [1, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1],
+        [1, 4, 4, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1],
+        [1, 0, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+        [1, 1, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
     [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 1, 1, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 0, 0, 4, 4, 0, 0, 0, 0, 3, 1],
-        [1, 1, 1, 1, 1, 1, 0, 0, 3, 4, 1, 1, 1, 1, 1, 1],
-        [1, 0, 3, 1, 1, 1, 1, 1, 4, 0, 1, 1, 1, 1, 1, 1],
-        [1, 0, 4, 0, 1, 1, 0, 4, 0, 0, 1, 1, 1, 1, 0, 1],
-        [1, 0, 0, 0, 3, 0, 4, 0, 4, 0, 0, 0, 0, 3, 0, 1],
+        [1, 1, 1, 1, 1, 1, 0, 0, 4, 4, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 0, 0, 5, 4, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 1, 1, 1, 1, 1, 4, 0, 1, 1, 1, 1, 1, 1],
+        [1, 0, 4, 0, 1, 1, 0, 4, 3, 0, 1, 1, 1, 1, 0, 1],
+        [1, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 1, 1, 1, 4, 0, 0, 1, 1, 0, 0, 4, 4, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-        [1, 0, 4, 4, 0, 1, 0, 1, 2, 1, 0, 4, 0, 0, 3, 1],
+        [1, 0, 4, 4, 0, 1, 0, 1, 2, 1, 0, 4, 0, 0, 0, 1],
         [1, 0, 4, 4, 0, 0, 0, 1, 1, 1, 0, 0, 4, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1],
         [1, 0, 4, 0, 4, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1],
-        [1, 3, 1, 0, 0, 4, 3, 4, 4, 0, 4, 4, 3, 0, 0, 1],
-        [1, 4, 1, 3, 0, 0, 4, 4, 0, 0, 0, 4, 4, 0, 0, 1],
+        [1, 0, 1, 0, 0, 4, 0, 4, 4, 0, 4, 4, 0, 0, 0, 1],
+        [1, 4, 1, 0, 0, 0, 4, 4, 0, 0, 0, 4, 4, 0, 0, 1],
         [1, 4, 1, 0, 0, 0, 4, 4, 0, 4, 4, 4, 0, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ]

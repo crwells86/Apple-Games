@@ -39,7 +39,7 @@ class InputController {
     func setupGameController() {
 #if os(iOS)
         let virtualConfiguration = GCVirtualController.Configuration()
-        virtualConfiguration.elements = [GCInputLeftThumbstick, GCInputRightThumbstick, GCInputLeftShoulder, GCInputRightShoulder]
+        virtualConfiguration.elements = [GCInputLeftThumbstick, GCInputRightThumbstick, GCInputRightShoulder]
         virtualController = GCVirtualController(configuration: virtualConfiguration)
         virtualController?.connect()
 #endif
@@ -209,11 +209,100 @@ class InputController {
     }
     
     private func handleButtonAPress() {
-        // ?
+        isNoteInCenterOfCameraView()
     }
     
     func handleLeftShoulderPress() {
         // ?
+    }
+    
+    private func isNoteInCenterOfCameraView() {
+        let cameraTransform = camera.presentation.worldTransform
+        let forwardDirection = SCNVector3(-cameraTransform.m31, -cameraTransform.m32, -cameraTransform.m33)
+        var closestNote: SCNNode? = nil
+        
+#if os(macOS)
+        let detectionDistance: CGFloat = 0.87
+        var closestDistance: CGFloat = detectionDistance
+#else
+        let detectionDistance: Float = 0.87
+        var closestDistance: Float = detectionDistance
+#endif
+        
+        // Check all nodes to find the closest "note"
+        for node in scene.rootNode.childNodes where node.name == "note" {
+            let toNote = SCNVector3(node.position.x - camera.position.x,
+                                    node.position.y - camera.position.y,
+                                    node.position.z - camera.position.z)
+            
+            let toNoteNormalized = normalizeVector(toNote)
+            let forwardDirectionNormalized = normalizeVector(forwardDirection)
+            
+            let dotProduct = toNoteNormalized.x * forwardDirectionNormalized.x +
+            toNoteNormalized.y * forwardDirectionNormalized.y +
+            toNoteNormalized.z * forwardDirectionNormalized.z
+            
+            let distanceToNote = lengthOfVector(toNote)
+            if dotProduct > 0.886 && distanceToNote < closestDistance {
+                closestNote = node
+                closestDistance = distanceToNote
+            }
+        }
+        
+        // If a note is close and centered, show it
+        if let _ = closestNote {
+            scene.isNoteShowing.toggle()
+        } else {
+            // Crouch or uncrouch the player
+            //            toggleCrouch()
+        }
+    }
+    
+    //    private func crouchPlayer() {
+    //        let crouchAction = SCNAction.move(by: SCNVector3(0, -0.4, 0), duration: 0.3)
+    //        crouchAction.timingMode = .easeInEaseOut
+    //        camera.runAction(crouchAction)
+    //    }
+    //
+    //    private func uncrouchPlayer() {
+    //        let uncrouchAction = SCNAction.move(by: SCNVector3(0, 0.4, 0), duration: 0.3)
+    //        uncrouchAction.timingMode = .easeInEaseOut
+    //        camera.runAction(uncrouchAction)
+    //    }
+    //
+    //    private func toggleCrouch() {
+    //        // Decide whether to crouch or uncrouch based on current state
+    //        if !scene.isPlayerCrouching {
+    //            crouchPlayer()
+    //            scene.isPlayerCrouching = true
+    //        } else {
+    //            uncrouchPlayer()
+    //            scene.isPlayerCrouching = false
+    //        }
+    //    }
+    
+#if os(macOS)
+    typealias Scalar = CGFloat
+#else
+    typealias Scalar = Float
+#endif
+    
+    func normalizeVector(_ vector: SCNVector3) -> SCNVector3 {
+        let length = lengthOfVector(vector)
+        guard length > 0 else { return SCNVector3Zero }
+        return SCNVector3(
+            Scalar(vector.x) / length,
+            Scalar(vector.y) / length,
+            Scalar(vector.z) / length
+        )
+    }
+    
+    func lengthOfVector(_ vector: SCNVector3) -> Scalar {
+        return Scalar(sqrt(
+            Scalar(vector.x) * Scalar(vector.x) +
+            Scalar(vector.y) * Scalar(vector.y) +
+            Scalar(vector.z) * Scalar(vector.z)
+        ))
     }
     
     func colorForPlatform(_ color: Color) -> Any {

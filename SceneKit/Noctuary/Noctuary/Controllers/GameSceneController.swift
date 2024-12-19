@@ -10,6 +10,9 @@ import AVFAudio
     var hasGameStarted = false
     var isGameOver = false
     
+    var isNoteShowing = false
+    var isPlayerCrouching = false
+    
     let floor = SCNFloor()
     var floorNode = SCNNode()
     
@@ -41,6 +44,8 @@ import AVFAudio
         
         levelController!.startProceduralLevelGeneration()
         loadLevel()
+        
+        levelController?.createFloorExcludingWalls(gridSize: 100)
         
         loadSounds()
         backgroundMusicPlayer?.volume = 0.087
@@ -97,32 +102,30 @@ import AVFAudio
     //MARK: - Collision Logic
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         guard !isGameOver else { return }
+        
+        guard let cameraNode = cameraController?.cameraNode else { return }
+        
         checkCollision(objectName: "wall", interactionThreshold: 1) { collidedNode in
-            // Assume the cameraNode is your camera's node
-            guard let cameraNode = cameraController?.cameraNode else { return }
             
-            // Get the direction vector between the camera and the wall
+            // Get direction and normalize
             let direction = cameraNode.position - collidedNode.position
-            
-            // Normalize the direction vector to get the push-away direction
             let normalizedDirection = direction.normalized()
             
-            // Move the camera away from the wall by a certain offset
+            // Adjust camera position to avoid collision
 #if os(iOS) || os(tvOS) || os(visionOS)
             let safeDistance: Float = 1.0
 #elseif os(macOS)
             let safeDistance: CGFloat = 1.0
 #endif
-            
             let newPosition = collidedNode.position + normalizedDirection * safeDistance
             
-            // Update the camera's position
+            // Ensure camera can still go under the object
+            if cameraNode.position.y < collidedNode.position.y - 0.2 {
+                return
+            }
+            
             cameraNode.position = newPosition
         }
-        
-        //        checkCollision(objectName: "note  ??", interactionThreshold: 4.4) { _ in
-        //            moveEnemies()
-        //        }
         
         checkCollision(objectName: "door", interactionThreshold: 1) { _ in
             loadLevel()
@@ -131,52 +134,54 @@ import AVFAudio
     
 #if os(iOS) || os(tvOS) || os(visionOS)
     func checkCollision(objectName: String, interactionThreshold: Float, onCollision: (SCNNode) -> Void) {
-        // Safely unwrap cameraController to avoid EXC_BAD_ACCESS
         guard let cameraController = cameraController else {
             print("Error: cameraController is nil.")
             return
         }
         
-        // Ensure cameraNode is valid
         let cameraNode = cameraController.cameraNode
         
-        // Filter out child nodes with the specific object name
+        // Get nodes to check collisions with
         let nodesToCheck = rootNode.childNodes.filter { $0.name == objectName }
         
         for childNode in nodesToCheck {
-            // Calculate the direction from camera to childNode
-            var direction = cameraNode.position - childNode.position
-            direction.y = 0 // Keep the movement horizontal
+            // Calculate the direction from the camera to the childNode
+            let direction = cameraNode.position - childNode.position
             
-            // Check if the object is close enough to trigger interaction
-            if cameraNode.position.distance(to: childNode.position) < interactionThreshold {
-                // Safely pass childNode to the onCollision closure
+            // Calculate distance for collision
+            let horizontalDistance = direction.horizontalDistance()
+            let verticalOffset = abs(cameraNode.position.y - childNode.position.y)
+            
+            // Only trigger collision if within the threshold horizontally
+            // and the camera is not below the object's height
+            if horizontalDistance < interactionThreshold && verticalOffset < 1.0 { // Adjust vertical offset as needed
                 onCollision(childNode)
             }
         }
     }
 #elseif os(macOS)
     func checkCollision(objectName: String, interactionThreshold: CGFloat, onCollision: (SCNNode) -> Void) {
-        // Safely unwrap cameraController to avoid EXC_BAD_ACCESS
         guard let cameraController = cameraController else {
             print("Error: cameraController is nil.")
             return
         }
         
-        // Ensure cameraNode is valid
         let cameraNode = cameraController.cameraNode
         
-        // Filter out child nodes with the specific object name
+        // Get nodes to check collisions with
         let nodesToCheck = rootNode.childNodes.filter { $0.name == objectName }
         
         for childNode in nodesToCheck {
-            // Calculate the direction from camera to childNode
-            var direction = cameraNode.position - childNode.position
-            direction.y = 0 // Keep the movement horizontal
+            // Calculate the direction from the camera to the childNode
+            let direction = cameraNode.position - childNode.position
             
-            // Check if the object is close enough to trigger interaction
-            if cameraNode.position.distance(to: childNode.position) < interactionThreshold {
-                // Safely pass childNode to the onCollision closure
+            // Calculate distance for collision
+            let horizontalDistance = direction.horizontalDistance()
+            let verticalOffset = abs(cameraNode.position.y - childNode.position.y)
+            
+            // Only trigger collision if within the threshold horizontally
+            // and the camera is not below the object's height
+            if horizontalDistance < interactionThreshold && verticalOffset < 1.0 {
                 onCollision(childNode)
             }
         }

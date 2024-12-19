@@ -45,8 +45,7 @@ struct MainMenuView: View {
             .padding()
             
             if isGameActive {
-                SceneView(scene: gameScene, pointOfView: gameScene.cameraController!.cameraNode, delegate: gameScene)
-                    .ignoresSafeArea()
+                GameView(gameScene: $gameScene)
             }
         }
     }
@@ -60,3 +59,6 @@ struct MainMenuView: View {
 #Preview {
     MainMenuView()
 }
+
+
+

@@ -59,4 +59,14 @@ extension SCNVector3 {
         let z = self.x * vector.y - self.y * vector.x
         return SCNVector3(x, y, z)
     }
+    
+    func horizontalDistance() -> Scalar {
+        return sqrt(pow(x, 2) + pow(z, 2))
+    }
+}
+
+extension SCNVector3: @retroactive Equatable {
+    public static func == (lhs: SCNVector3, rhs: SCNVector3) -> Bool {
+        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
+    }
 }
