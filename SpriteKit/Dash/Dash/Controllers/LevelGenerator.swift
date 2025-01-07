@@ -10,30 +10,37 @@ class LevelGenerator {
     }
     
     func generateLevel(using tilesets: [[[Int]]], numberOfSections: Int) {
+        guard numberOfSections > 0 else { return }
         var currentColumn = 0
         
-        for _ in 0..<numberOfSections {
-            // Randomly pick a tileset
+        // Add the first tileset explicitly so we don't kill the player as soon as they start
+        let initialTileset = tileset1
+        addTileset(initialTileset, at: &currentColumn)
+        
+        // Add remaining sections randomly
+        for _ in 1..<numberOfSections {
             guard let selectedTileset = tilesets.randomElement() else { continue }
-            addNewSection(using: tilesets)
-            
-            columns = max(columns, currentColumn + selectedTileset[0].count)
-            
-            for (row, tilesetRow) in selectedTileset.enumerated() {
-                if level.count <= row {
-                    level.append(Array(repeating: TileType.empty.rawValue, count: columns))
-                }
-                
-                for (column, tile) in tilesetRow.enumerated() {
-                    let targetColumn = currentColumn + column
-                    guard targetColumn < columns else { continue }
-                    
-                    level[row][targetColumn] = tile
-                }
+            addTileset(selectedTileset, at: &currentColumn)
+        }
+    }
+    
+    private func addTileset(_ tileset: [[Int]], at currentColumn: inout Int) {
+        columns = max(columns, currentColumn + tileset[0].count)
+        
+        for (row, tilesetRow) in tileset.enumerated() {
+            if level.count <= row {
+                level.append(Array(repeating: TileType.empty.rawValue, count: columns))
             }
             
-            currentColumn += selectedTileset[0].count
+            for (column, tile) in tilesetRow.enumerated() {
+                let targetColumn = currentColumn + column
+                guard targetColumn < columns else { continue }
+                
+                level[row][targetColumn] = tile
+            }
         }
+        
+        currentColumn += tileset[0].count
     }
     
     func addNewSection(using tilesets: [[[Int]]] = []) {

@@ -5,7 +5,7 @@ struct DashApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .statusBarHidden()
+                .applyStatusBarHidden()
         }
     }
 }

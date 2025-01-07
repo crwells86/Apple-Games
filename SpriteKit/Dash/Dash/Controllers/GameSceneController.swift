@@ -11,6 +11,8 @@ import AVFoundation
     var player = SKSpriteNode()
     var cameraNode: SKCameraNode!
     
+    var spriteSize = CGSize(width: 48, height: 48)
+    
     var isJumping = false
     
     var isInvincible = false
@@ -31,6 +33,18 @@ import AVFoundation
         backgroundColor = .black
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -15)
+        
+#if os(iOS)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            spriteSize = CGSize(width: 64, height: 64)
+        } else {
+            spriteSize = CGSize(width: 48, height: 48)
+        }
+#elseif os(macOS)
+        spriteSize = CGSize(width: 96, height: 96)
+#elseif os(tvOS)
+        spriteSize = CGSize(width: 128, height: 128)
+#endif
     }
     
     func getWindowSize() -> CGSize? {
@@ -57,7 +71,7 @@ import AVFoundation
         
         cameraNode = SKCameraNode()
         camera = cameraNode
-        cameraNode.position.x = player.position.x + 64
+        cameraNode.position.x = player.position.x + 120
         cameraNode.position.y = CGFloat(getWindowSize()!.height / 2)
         addChild(cameraNode)
         
@@ -73,14 +87,14 @@ import AVFoundation
     func getJumpForDevice() -> Int {
 #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            return 1800
+            return 96
         } else {
-            return 172
+            return 72
         }
 #elseif os(macOS)
-        return 420
+        return 96
 #elseif os(tvOS)
-        return 420
+        return 96
 #endif
     }
     
@@ -94,9 +108,6 @@ import AVFoundation
     
     // MARK: - Player Initialization
     func setupPlayer() {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
-        
         player = SKSpriteNode(color: .clear, size: spriteSize)
         player.position = CGPoint(x: getWindowSize()!.width / 4, y: getWindowSize()!.height / 2)
         addChild(player)
@@ -121,8 +132,6 @@ import AVFoundation
     
     // MARK: - Enemy Initialization
     func setupEnemy() -> SKSpriteNode {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
         let enemy = SKSpriteNode(color: .clear, size: spriteSize)
         
         enemy.position =  CGPoint(x: getWindowSize()!.width / 1.2, y: getWindowSize()!.height)
@@ -153,35 +162,24 @@ import AVFoundation
     
     // MARK: - Level Logic
     func platformLeading() -> SKSpriteNode {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
-        
         let texture = SKTexture(image: .platformLeading)
         
         return SKSpriteNode(texture: texture, size: spriteSize)
     }
     
     func platformCenter() -> SKSpriteNode {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
-        
         let texture = SKTexture(image: .platformCenter)
         
         return SKSpriteNode(texture: texture, size: spriteSize)
     }
     
     func platformTrailing() -> SKSpriteNode {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
-        
         let texture = SKTexture(image: .platformTrailing)
         
         return SKSpriteNode(texture: texture, size: spriteSize)
     }
     
     func coin() -> SKSpriteNode {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
         let coin = SKSpriteNode(color: .clear, size: spriteSize)
         
         let animationTextures = [
@@ -198,8 +196,6 @@ import AVFoundation
     }
     
     func powerUp() -> SKSpriteNode {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
         let coin = SKSpriteNode(color: .clear, size: spriteSize)
         
         let animationTextures = [
@@ -217,9 +213,6 @@ import AVFoundation
     }
     
     func renderLevel() {
-        let scalingFactor = getWindowSize()!.width / 6
-        let spriteSize = CGSize(width: scalingFactor, height: scalingFactor)
-        
         let level = levelGenerator.getLevel()
         let tileSize = spriteSize
         
@@ -228,14 +221,14 @@ import AVFoundation
         
 #if os(iOS)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            verticalOffset = -(screenHeight / 18)
+            verticalOffset = -(screenHeight / 2)
         } else {
             verticalOffset = -(screenHeight / 3)
         }
 #elseif os(macOS)
-        verticalOffset = -(screenHeight / 3)
+        verticalOffset = -(screenHeight / 6)
 #elseif os(tvOS)
-        verticalOffset = -(screenHeight / 3)
+        verticalOffset = -(screenHeight / 2)
 #endif
         
         for (row, rowArray) in level.enumerated() {
@@ -392,8 +385,8 @@ import AVFoundation
         
         isInvincible = true
         
-        let pulseOut = SKAction.fadeAlpha(to: 0.5, duration: 0.5)
-        let pulseIn = SKAction.fadeAlpha(to: 0.04, duration: 0.5)
+        let pulseOut = SKAction.fadeAlpha(to: 0.4, duration: 0.4)
+        let pulseIn = SKAction.fadeAlpha(to: 0.03, duration: 0.4)
         let pulseSequence = SKAction.sequence([pulseOut, pulseIn])
         let pulseRepeat = SKAction.repeatForever(pulseSequence)
         
@@ -412,7 +405,7 @@ import AVFoundation
         invincibleTimer?.invalidate()
         invincibleTimer = nil
         
-        player.removeAction(forKey: "pulse")
+        player.removeAction(forKey: "pulseAction")
         player.alpha = 1.0
     }
     
