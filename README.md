@@ -6,6 +6,8 @@ P.S.
 Share and enjoy!
 
 Links:
-[YouTube](https://www.youtube.com/channel/UC7WL5hFhBMQ0IKVlOtc6kiA) 
+[YouTube](https://www.youtube.com/channel/UC7WL5hFhBMQ0IKVlOtc6kiA)
+
 [LinkedIn](https://www.linkedin.com/in/caleb-wells-38420911a/)
+
 [App Store](https://apps.apple.com/se/developer/caleb-wells/id833185564)
