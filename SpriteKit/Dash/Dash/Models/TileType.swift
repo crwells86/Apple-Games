@@ -1,7 +1,9 @@
 enum TileType: Int {
     case empty = 0
-    case platform = 1
-    case coin = 2
-    case enemy = 3
-    case powerUp = 4
+    case platformLeading = 1
+    case platformCenter = 2
+    case platformTrailing = 3
+    case coin = 4
+    case enemy = 5
+    case powerUp = 6
 }
