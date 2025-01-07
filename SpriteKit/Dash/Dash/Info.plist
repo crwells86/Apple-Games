@@ -13,5 +13,9 @@
 			<string>ExtendedGamepad</string>
 		</dict>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>04B_03__.TTF</string>
+	</array>
 </dict>
 </plist>

@@ -5,21 +5,26 @@ struct PausedMenuView: View {
     
     var body: some View {
         VStack {
-            Text("Hello, paused menu!")
-            
             Button {
                 gameSceneController.gameState = .playing
             } label: {
                 Text("Resume")
+                    .retroFont(style: .title2)
             }
+            .padding()
             
             Button {
                 gameSceneController.gameState = .mainMenu
             } label: {
                 Text("Quit")
+                    .retroFont(style: .title2)
             }
+            .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .foregroundStyle(.white)
         .padding()
+        .background(.black)
     }
 }
 

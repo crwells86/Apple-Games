@@ -14,14 +14,15 @@ struct GameView: View {
             
             HStack {
                 Text("Score: \(gameSceneController.score)")
-                    .font(.largeTitle)
+                    .retroFont(style: .largeTitle)
                 
                 Spacer()
                 
                 Button {
                     gameSceneController.gameState = .paused
                 } label: {
-                    Image(systemName: "pause.circle.fill")
+                    Text("II")
+                        .retroFont(style: .largeTitle)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
