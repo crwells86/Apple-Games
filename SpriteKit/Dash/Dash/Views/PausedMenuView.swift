@@ -14,6 +14,7 @@ struct PausedMenuView: View {
             .padding()
             
             Button {
+                gameSceneController.gameOver()
                 gameSceneController.gameState = .mainMenu
             } label: {
                 Text("Quit")

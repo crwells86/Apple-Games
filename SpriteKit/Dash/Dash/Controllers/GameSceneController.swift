@@ -11,7 +11,7 @@ import AVFoundation
     var player = SKSpriteNode()
     var cameraNode: SKCameraNode!
     
-    var spriteSize = CGSize(width: 48, height: 48)
+    var spriteSize = CGSize(width: 55, height: 55)
     
     var isJumping = false
     
@@ -34,17 +34,17 @@ import AVFoundation
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -15)
         
-#if os(iOS)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            spriteSize = CGSize(width: 64, height: 64)
-        } else {
-            spriteSize = CGSize(width: 48, height: 48)
-        }
-#elseif os(macOS)
-        spriteSize = CGSize(width: 96, height: 96)
-#elseif os(tvOS)
-        spriteSize = CGSize(width: 128, height: 128)
-#endif
+        //#if os(iOS)
+        //        if UIDevice.current.userInterfaceIdiom == .pad {
+        //            spriteSize = CGSize(width: 64, height: 64)
+        //        } else {
+        //            spriteSize = CGSize(width: 48, height: 48)
+        //        }
+        //#elseif os(macOS)
+        //        spriteSize = CGSize(width: 96, height: 96)
+        //#elseif os(tvOS)
+        //        spriteSize = CGSize(width: 128, height: 128)
+        //#endif
     }
     
     func getWindowSize() -> CGSize? {
@@ -84,24 +84,10 @@ import AVFoundation
         backgroundMusicPlayer?.volume = 0.16
     }
     
-    func getJumpForDevice() -> Int {
-#if os(iOS)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return 96
-        } else {
-            return 72
-        }
-#elseif os(macOS)
-        return 96
-#elseif os(tvOS)
-        return 96
-#endif
-    }
-    
     func jump() {
         if !isJumping {
             isJumping = true
-            let jumpImpulse = CGVector(dx: 0, dy: getJumpForDevice())
+            let jumpImpulse = CGVector(dx: 0, dy: 96)
             player.physicsBody?.applyImpulse(jumpImpulse)
         }
     }
@@ -315,19 +301,24 @@ import AVFoundation
             }
         }
         
-        let offScreenX = cameraNode.position.x - size.width
-        activeTiles.removeAll { tile in
-            if tile.position.x < offScreenX {
-                tile.removeFromParent()
-                return true
-            }
-            return false
-        }
+        //        let offScreenX = cameraNode.position.x - size.width
+        //        activeTiles.removeAll { tile in
+        //            if tile.position.x < offScreenX {
+        //                tile.removeFromParent()
+        //                return true
+        //            }
+        //            return false
+        //        }
         
-        if let lastTileX = activeTiles.last?.position.x, lastTileX < cameraNode.position.x + size.width {
-            levelGenerator.addNewSection()
-            renderLevel()
-        }
+        //        print("Last tile X:", activeTiles.last?.position.x ?? "None")
+        //        print("Camera X:", cameraNode.position.x)
+        //        print("Active tiles count:", activeTiles.count)
+        
+        
+        //        if let lastTileX = activeTiles.last?.position.x, lastTileX < cameraNode.position.x + size.width {
+        //            levelGenerator.addNewSection()
+        //            renderLevel()
+        //        }
     }
     
     // MARK: - Collision Detection

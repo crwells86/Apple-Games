@@ -3,6 +3,7 @@ import SwiftUI
 struct GameOverMenuView: View {
     @AppStorage("gameHighScore") var highScore = 0
     @Binding var gameSceneController: GameSceneController
+    var gameCenterController = GameCenterController.shared
     
     var body: some View {
         VStack(spacing: 12) {
@@ -52,6 +53,10 @@ struct GameOverMenuView: View {
         .onAppear {
             if gameSceneController.score > highScore {
                 highScore = gameSceneController.score
+                
+                Task {
+                    await gameCenterController.submitScoreToGameCenter(score: gameSceneController.score)
+                }
             }
         }
     }
