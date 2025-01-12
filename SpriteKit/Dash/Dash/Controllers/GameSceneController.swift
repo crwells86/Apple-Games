@@ -9,7 +9,6 @@ import AVFoundation
     var score = 0
     
     var player = SKSpriteNode()
-    var cameraNode: SKCameraNode!
     
     var spriteSize = CGSize(width: 55, height: 55)
     
@@ -18,8 +17,9 @@ import AVFoundation
     var isInvincible = false
     var invincibleTimer: Timer?
     
+    var lastRenderedX: CGFloat = 0
     let levelGenerator = LevelGenerator(rows: 8, columns: 128)
-    var activeTiles: [SKSpriteNode] = []
+    var activeTiles = [SKSpriteNode]()
     
     var backgroundMusicPlayer: AVAudioPlayer?
     let coinSound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
@@ -32,19 +32,7 @@ import AVFoundation
         size = getWindowSize()!
         backgroundColor = .black
         physicsWorld.contactDelegate = self
-        physicsWorld.gravity = CGVector(dx: 0, dy: -15)
-        
-        //#if os(iOS)
-        //        if UIDevice.current.userInterfaceIdiom == .pad {
-        //            spriteSize = CGSize(width: 64, height: 64)
-        //        } else {
-        //            spriteSize = CGSize(width: 48, height: 48)
-        //        }
-        //#elseif os(macOS)
-        //        spriteSize = CGSize(width: 96, height: 96)
-        //#elseif os(tvOS)
-        //        spriteSize = CGSize(width: 128, height: 128)
-        //#endif
+        physicsWorld.gravity = CGVector(dx: 0, dy: -20)
     }
     
     func getWindowSize() -> CGSize? {
@@ -69,16 +57,10 @@ import AVFoundation
         coinsCollected = 0
         score = 0
         
-        cameraNode = SKCameraNode()
-        camera = cameraNode
-        cameraNode.position.x = player.position.x + 120
-        cameraNode.position.y = CGFloat(getWindowSize()!.height / 2)
-        addChild(cameraNode)
-        
         setupPlayer()
         
         levelGenerator.generateLevel(using: predefinedTilesets, numberOfSections: 8)
-        renderLevel()
+        renderLevel(startX: 0)
         
         playBackgroundMusic(filename: "backgroundMusic.wav")
         backgroundMusicPlayer?.volume = 0.16
@@ -102,6 +84,7 @@ import AVFoundation
         player.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
         player.physicsBody?.contactTestBitMask = CollisionTypes.coin.rawValue | CollisionTypes.enemy.rawValue | CollisionTypes.platform.rawValue
         player.physicsBody?.collisionBitMask = CollisionTypes.platform.rawValue
+        
         player.physicsBody?.affectedByGravity = true
         player.physicsBody?.allowsRotation = false
         
@@ -198,7 +181,8 @@ import AVFoundation
         return coin
     }
     
-    func renderLevel() {
+    // MARK: - Game Loop
+    func renderLevel(startX: CGFloat) {
         let level = levelGenerator.getLevel()
         let tileSize = spriteSize
         
@@ -239,87 +223,92 @@ import AVFoundation
                     continue
                 }
                 
-                let x = CGFloat(col) * tileSize.width
+                let x = startX + (CGFloat(col) * tileSize.width)
                 let y = screenHeight - (CGFloat(row + 1) * tileSize.height) + verticalOffset
                 
                 node.position = CGPoint(x: x, y: y)
+                activeTiles.append(node)
                 addChild(node)
                 
-                if tileType == .platformLeading {
-                    node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-                    node.physicsBody?.categoryBitMask = CollisionTypes.platform.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
-                    node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
-                    node.physicsBody?.affectedByGravity = false
-                    node.physicsBody?.isDynamic = false
-                } else if tileType == .platformCenter {
-                    node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-                    node.physicsBody?.categoryBitMask = CollisionTypes.platform.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
-                    node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
-                    node.physicsBody?.affectedByGravity = false
-                    node.physicsBody?.isDynamic = false
-                } else if tileType == .platformTrailing {
-                    node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-                    node.physicsBody?.categoryBitMask = CollisionTypes.platform.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
-                    node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
-                    node.physicsBody?.affectedByGravity = false
-                    node.physicsBody?.isDynamic = false
-                } else if tileType == .coin {
-                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-                    node.physicsBody?.categoryBitMask = CollisionTypes.coin.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.affectedByGravity = false
-                    node.physicsBody?.isDynamic = false
-                } else if tileType == .powerUp {
-                    node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
-                    node.physicsBody?.categoryBitMask = CollisionTypes.powerUp.rawValue
-                    node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
-                    node.physicsBody?.affectedByGravity = false
-                    node.physicsBody?.isDynamic = false
-                }
+                setupPhysics(for: node, type: tileType)
             }
+        }
+        
+        lastRenderedX = startX + (CGFloat(level[0].count) * tileSize.width)
+    }
+    
+    func setupPhysics(for node: SKSpriteNode, type: TileType) {
+        switch type {
+        case .platformLeading, .platformCenter, .platformTrailing:
+            node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+            node.physicsBody?.categoryBitMask = CollisionTypes.platform.rawValue
+            node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
+            node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue | CollisionTypes.enemy.rawValue
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
+        case .coin:
+            node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+            node.physicsBody?.categoryBitMask = CollisionTypes.coin.rawValue
+            node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+            node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
+        case .powerUp:
+            node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2)
+            node.physicsBody?.categoryBitMask = CollisionTypes.powerUp.rawValue
+            node.physicsBody?.contactTestBitMask = CollisionTypes.player.rawValue
+            node.physicsBody?.collisionBitMask = CollisionTypes.player.rawValue
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
+        default:
+            break
         }
     }
     
-    // MARK: - Game Loop
     override func update(_ currentTime: TimeInterval) {
-        let moveAction = SKAction.move(by: CGVector(dx: 6, dy: 0), duration: 1)
+        let moveAction = SKAction.move(by: CGVector(dx: -6, dy: 0), duration: 1.6)
+        moveAction.timingMode = .linear
         
         if gameState == .playing {
-            player.run(moveAction)
+            for tile in activeTiles {
+                tile.run(moveAction)
+            }
+            
+            if let lastTile = activeTiles.last,
+               let screenSize = getWindowSize() {
+                let screenPosition = screenSize.width
+                if lastTile.position.x <= screenPosition {
+                    
+                    levelGenerator.generateLevel(using: predefinedTilesets, numberOfSections: 8)
+                    renderLevel(startX: lastTile.position.x)
+                }
+            }
+            
+            activeTiles = activeTiles.filter { tile in
+                if tile.position.x + tile.size.width < 0 {
+                    activeTiles.removeFirst(activeTiles.count / 2)
+                    return false
+                }
+                return true
+            }
         }
         
-        cameraNode.position.x = player.position.x + 120
-        
-        if player.position.y < -self.size.height / 2 {
+        if player.position.x + player.size.width < 0 {
             if gameState == .playing {
+                activeTiles.removeAll()
                 gameOver()
             }
         }
         
-        //        let offScreenX = cameraNode.position.x - size.width
-        //        activeTiles.removeAll { tile in
-        //            if tile.position.x < offScreenX {
-        //                tile.removeFromParent()
-        //                return true
-        //            }
-        //            return false
-        //        }
-        
-        //        print("Last tile X:", activeTiles.last?.position.x ?? "None")
-        //        print("Camera X:", cameraNode.position.x)
-        //        print("Active tiles count:", activeTiles.count)
-        
-        
-        //        if let lastTileX = activeTiles.last?.position.x, lastTileX < cameraNode.position.x + size.width {
-        //            levelGenerator.addNewSection()
-        //            renderLevel()
-        //        }
+        if player.position.y < -size.height / 2 {
+            if gameState == .playing {
+                gameOver()
+            }
+        }
     }
+    
+    
+    
     
     // MARK: - Collision Detection
     func didBegin(_ contact: SKPhysicsContact) {
@@ -376,8 +365,8 @@ import AVFoundation
         
         isInvincible = true
         
-        let pulseOut = SKAction.fadeAlpha(to: 0.4, duration: 0.4)
-        let pulseIn = SKAction.fadeAlpha(to: 0.03, duration: 0.4)
+        let pulseOut = SKAction.fadeAlpha(to: 0.6, duration: 0.3)
+        let pulseIn = SKAction.fadeAlpha(to: 0.3, duration: 0.3)
         let pulseSequence = SKAction.sequence([pulseOut, pulseIn])
         let pulseRepeat = SKAction.repeatForever(pulseSequence)
         
