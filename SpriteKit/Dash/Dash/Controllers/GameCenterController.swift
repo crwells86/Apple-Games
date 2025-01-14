@@ -2,6 +2,7 @@ import GameKit
 
 @Observable class GameCenterController: NSObject {
     static let shared = GameCenterController()
+    let leaderboardIDs = ["2DHighScore", "2DDashDailyHighScore"]
     var authenticated = false
     
     private override init() {
@@ -12,9 +13,15 @@ import GameKit
     func authenticatePlayer() {
         GKLocalPlayer.local.authenticateHandler = { viewController, error in
             if let viewController = viewController {
+#if os(macOS)
+                if let window = NSApplication.shared.windows.first {
+                    window.contentViewController?.presentAsModalWindow(viewController)
+                }
+#else
                 if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                     scene.windows.first?.rootViewController?.present(viewController, animated: true, completion: nil)
                 }
+#endif
             } else if GKLocalPlayer.local.isAuthenticated {
                 self.authenticated = true
             } else {
@@ -36,7 +43,7 @@ import GameKit
             score,
             context: 0,
             player: GKLocalPlayer.local,
-            leaderboardIDs: ["2DHighScore", "2DDashDailyHighScore"]
+            leaderboardIDs: leaderboardIDs
         ) { error in
             if let error = error {
                 print("Failed to report high score to Game Center: \(error.localizedDescription)")

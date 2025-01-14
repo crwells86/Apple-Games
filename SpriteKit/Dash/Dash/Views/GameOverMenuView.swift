@@ -59,6 +59,7 @@ struct GameOverMenuView: View {
                 }
             }
         }
+        .buttonStyle(.plain)
     }
 }
 

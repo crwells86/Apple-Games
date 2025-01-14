@@ -21,6 +21,8 @@ import AVFoundation
     let levelGenerator = LevelGenerator(rows: 8, columns: 128)
     var activeTiles = [SKSpriteNode]()
     
+    var inputController: InputController?
+    
     var backgroundMusicPlayer: AVAudioPlayer?
     let coinSound = SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false)
     let deathSound = SKAction.playSoundFileNamed("death.wav", waitForCompletion: false)
@@ -33,6 +35,8 @@ import AVFoundation
         backgroundColor = .black
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -20)
+        
+        inputController = InputController(gameSceneController: self)
     }
     
     func getWindowSize() -> CGSize? {
@@ -196,7 +200,7 @@ import AVFoundation
             verticalOffset = -(screenHeight / 3)
         }
 #elseif os(macOS)
-        verticalOffset = -(screenHeight / 6)
+        verticalOffset = -(screenHeight / 18)
 #elseif os(tvOS)
         verticalOffset = -(screenHeight / 2)
 #endif
@@ -306,9 +310,6 @@ import AVFoundation
             }
         }
     }
-    
-    
-    
     
     // MARK: - Collision Detection
     func didBegin(_ contact: SKPhysicsContact) {

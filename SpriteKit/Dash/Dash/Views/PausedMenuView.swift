@@ -26,6 +26,7 @@ struct PausedMenuView: View {
         .foregroundStyle(.white)
         .padding()
         .background(.black)
+        .buttonStyle(.plain)
     }
 }
 

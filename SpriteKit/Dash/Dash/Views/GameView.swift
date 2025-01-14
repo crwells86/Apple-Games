@@ -29,6 +29,7 @@ struct GameView: View {
             .foregroundStyle(.white)
             .padding()
         }
+        .buttonStyle(.plain)
     }
 }
 

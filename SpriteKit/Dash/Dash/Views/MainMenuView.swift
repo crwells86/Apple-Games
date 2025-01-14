@@ -20,6 +20,7 @@ struct MainMenuView: View {
         .foregroundStyle(.white)
         .padding()
         .background(.black)
+        .buttonStyle(.plain)
     }
 }
 
