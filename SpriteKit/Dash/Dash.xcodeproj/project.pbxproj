@@ -6,6 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		00AD25C92D36E015005EC718 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0098B4432D272D57003DF295 /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -20,6 +32,16 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		00AD25CB2D36E04C005EC718 /* Exceptions for "Fonts" folder in "Copy Files" phase from "Dash" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 00AD25C92D36E015005EC718 /* CopyFiles */;
+			membershipExceptions = (
+				04B_03__.TTF,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0098B4452D272D57003DF295 /* Dash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -27,6 +49,14 @@
 				0098B4562D272E1F003DF295 /* Exceptions for "Dash" folder in "Dash" target */,
 			);
 			path = Dash;
+			sourceTree = "<group>";
+		};
+		00AD25C82D36DF1D005EC718 /* Fonts */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				00AD25CB2D36E04C005EC718 /* Exceptions for "Fonts" folder in "Copy Files" phase from "Dash" target */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -45,6 +75,7 @@
 		0098B43A2D272D57003DF295 = {
 			isa = PBXGroup;
 			children = (
+				00AD25C82D36DF1D005EC718 /* Fonts */,
 				0098B4452D272D57003DF295 /* Dash */,
 				0098B4442D272D57003DF295 /* Products */,
 			);
@@ -68,6 +99,7 @@
 				0098B43F2D272D57003DF295 /* Sources */,
 				0098B4402D272D57003DF295 /* Frameworks */,
 				0098B4412D272D57003DF295 /* Resources */,
+				00AD25C92D36E015005EC718 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -75,6 +107,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0098B4452D272D57003DF295 /* Dash */,
+				00AD25C82D36DF1D005EC718 /* Fonts */,
 			);
 			name = Dash;
 			packageProductDependencies = (
