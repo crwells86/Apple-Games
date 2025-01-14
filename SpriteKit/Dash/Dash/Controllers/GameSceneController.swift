@@ -40,7 +40,7 @@ import AVFoundation
     }
     
     func getWindowSize() -> CGSize? {
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }) {
             return keyWindow.frame.size

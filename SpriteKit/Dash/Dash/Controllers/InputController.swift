@@ -62,6 +62,13 @@ class InputController {
                 if pressed { self.handleButtonAPress() }
             }
         }
+        
+        if let microGamepad = controller.microGamepad {
+            microGamepad.buttonX.valueChangedHandler = { [weak self] _, _, pressed in
+                guard let self = self else { return }
+                if pressed { self.handleButtonAPress() }
+            }
+        }
     }
     
     private func setupKeyboardInput() {
