@@ -10,22 +10,9 @@
 		00E191082D56732F00175782 /* Hand it to me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hand it to me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		00E1911B2D5673C300175782 /* Exceptions for "Hand it to me" folder in "Hand it to me" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Hand-it-to-me-Info.plist",
-			);
-			target = 00E191072D56732F00175782 /* Hand it to me */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		00E1910A2D56732F00175782 /* Hand it to me */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				00E1911B2D5673C300175782 /* Exceptions for "Hand it to me" folder in "Hand it to me" target */,
-			);
 			path = "Hand it to me";
 			sourceTree = "<group>";
 		};
