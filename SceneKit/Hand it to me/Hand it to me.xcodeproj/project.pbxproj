@@ -6,63 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXCopyFilesBuildPhase section */
-		00AD25C92D36E015005EC718 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Fonts;
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		0098B4432D272D57003DF295 /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E191082D56732F00175782 /* Hand it to me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hand it to me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0098B4562D272E1F003DF295 /* Exceptions for "Dash" folder in "Dash" target */ = {
+		00E1911B2D5673C300175782 /* Exceptions for "Hand it to me" folder in "Hand it to me" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				"Hand-it-to-me-Info.plist",
 			);
-			target = 0098B4422D272D57003DF295 /* Dash */;
+			target = 00E191072D56732F00175782 /* Hand it to me */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		00AD25CB2D36E04C005EC718 /* Exceptions for "Fonts" folder in "Copy Files" phase from "Dash" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 00AD25C92D36E015005EC718 /* CopyFiles */;
-			membershipExceptions = (
-				04B_03__.TTF,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0098B4452D272D57003DF295 /* Dash */ = {
+		00E1910A2D56732F00175782 /* Hand it to me */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				0098B4562D272E1F003DF295 /* Exceptions for "Dash" folder in "Dash" target */,
+				00E1911B2D5673C300175782 /* Exceptions for "Hand it to me" folder in "Hand it to me" target */,
 			);
-			path = Dash;
-			sourceTree = "<group>";
-		};
-		00AD25C82D36DF1D005EC718 /* Fonts */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				00AD25CB2D36E04C005EC718 /* Exceptions for "Fonts" folder in "Copy Files" phase from "Dash" target */,
-			);
-			path = Fonts;
+			path = "Hand it to me";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0098B4402D272D57003DF295 /* Frameworks */ = {
+		00E191052D56732F00175782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,19 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0098B43A2D272D57003DF295 = {
+		00E190FF2D56732F00175782 = {
 			isa = PBXGroup;
 			children = (
-				00AD25C82D36DF1D005EC718 /* Fonts */,
-				0098B4452D272D57003DF295 /* Dash */,
-				0098B4442D272D57003DF295 /* Products */,
+				00E1910A2D56732F00175782 /* Hand it to me */,
+				00E191092D56732F00175782 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0098B4442D272D57003DF295 /* Products */ = {
+		00E191092D56732F00175782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0098B4432D272D57003DF295 /* Dash.app */,
+				00E191082D56732F00175782 /* Hand it to me.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,66 +61,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0098B4422D272D57003DF295 /* Dash */ = {
+		00E191072D56732F00175782 /* Hand it to me */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0098B4522D272D59003DF295 /* Build configuration list for PBXNativeTarget "Dash" */;
+			buildConfigurationList = 00E191172D56733100175782 /* Build configuration list for PBXNativeTarget "Hand it to me" */;
 			buildPhases = (
-				0098B43F2D272D57003DF295 /* Sources */,
-				0098B4402D272D57003DF295 /* Frameworks */,
-				0098B4412D272D57003DF295 /* Resources */,
-				00AD25C92D36E015005EC718 /* CopyFiles */,
+				00E191042D56732F00175782 /* Sources */,
+				00E191052D56732F00175782 /* Frameworks */,
+				00E191062D56732F00175782 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0098B4452D272D57003DF295 /* Dash */,
-				00AD25C82D36DF1D005EC718 /* Fonts */,
+				00E1910A2D56732F00175782 /* Hand it to me */,
 			);
-			name = Dash;
+			name = "Hand it to me";
 			packageProductDependencies = (
 			);
-			productName = Dash;
-			productReference = 0098B4432D272D57003DF295 /* Dash.app */;
+			productName = "Hand it to me";
+			productReference = 00E191082D56732F00175782 /* Hand it to me.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0098B43B2D272D57003DF295 /* Project object */ = {
+		00E191002D56732F00175782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					0098B4422D272D57003DF295 = {
+					00E191072D56732F00175782 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 0098B43E2D272D57003DF295 /* Build configuration list for PBXProject "Dash" */;
+			buildConfigurationList = 00E191032D56732F00175782 /* Build configuration list for PBXProject "Hand it to me" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 0098B43A2D272D57003DF295;
+			mainGroup = 00E190FF2D56732F00175782;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 0098B4442D272D57003DF295 /* Products */;
+			productRefGroup = 00E191092D56732F00175782 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0098B4422D272D57003DF295 /* Dash */,
+				00E191072D56732F00175782 /* Hand it to me */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0098B4412D272D57003DF295 /* Resources */ = {
+		00E191062D56732F00175782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -161,7 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0098B43F2D272D57003DF295 /* Sources */ = {
+		00E191042D56732F00175782 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -171,7 +138,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0098B4502D272D59003DF295 /* Debug */ = {
+		00E191152D56733100175782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +199,7 @@
 			};
 			name = Debug;
 		};
-		0098B4512D272D59003DF295 /* Release */ = {
+		00E191162D56733100175782 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,23 +252,22 @@
 			};
 			name = Release;
 		};
-		0098B4532D272D59003DF295 /* Debug */ = {
+		00E191182D56733100175782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Dash/Dash.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Hand it to me/Hand_it_to_me.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dash/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Hand it to me/Preview Content\"";
 				DEVELOPMENT_TEAM = 33NUGZ4GWE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Dash/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "2D Dash";
+				INFOPLIST_FILE = "Hand-it-to-me-Info.plist";
 				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -312,14 +278,13 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.2D-Dash";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.Hand-it-to-me";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -328,27 +293,26 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 17.6;
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		0098B4542D272D59003DF295 /* Release */ = {
+		00E191192D56733100175782 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Dash/Dash.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Hand it to me/Hand_it_to_me.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dash/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Hand it to me/Preview Content\"";
 				DEVELOPMENT_TEAM = 33NUGZ4GWE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Dash/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "2D Dash";
+				INFOPLIST_FILE = "Hand-it-to-me-Info.plist";
 				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -359,14 +323,13 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.2D-Dash";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.Hand-it-to-me";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -375,32 +338,32 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 17.6;
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0098B43E2D272D57003DF295 /* Build configuration list for PBXProject "Dash" */ = {
+		00E191032D56732F00175782 /* Build configuration list for PBXProject "Hand it to me" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0098B4502D272D59003DF295 /* Debug */,
-				0098B4512D272D59003DF295 /* Release */,
+				00E191152D56733100175782 /* Debug */,
+				00E191162D56733100175782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0098B4522D272D59003DF295 /* Build configuration list for PBXNativeTarget "Dash" */ = {
+		00E191172D56733100175782 /* Build configuration list for PBXNativeTarget "Hand it to me" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0098B4532D272D59003DF295 /* Debug */,
-				0098B4542D272D59003DF295 /* Release */,
+				00E191182D56733100175782 /* Debug */,
+				00E191192D56733100175782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 0098B43B2D272D57003DF295 /* Project object */;
+	rootObject = 00E191002D56732F00175782 /* Project object */;
 }

@@ -6,63 +6,33 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXCopyFilesBuildPhase section */
-		00AD25C92D36E015005EC718 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Fonts;
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		0098B4432D272D57003DF295 /* Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E51A9F2D4A8AF600AC2F2D /* Error 37.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Error 37.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0098B4562D272E1F003DF295 /* Exceptions for "Dash" folder in "Dash" target */ = {
+		00E51AC42D4A920B00AC2F2D /* Exceptions for "Error 37" folder in "Error 37" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				"Error-37-Info.plist",
 			);
-			target = 0098B4422D272D57003DF295 /* Dash */;
+			target = 00E51A9E2D4A8AF600AC2F2D /* Error 37 */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		00AD25CB2D36E04C005EC718 /* Exceptions for "Fonts" folder in "Copy Files" phase from "Dash" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 00AD25C92D36E015005EC718 /* CopyFiles */;
-			membershipExceptions = (
-				04B_03__.TTF,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0098B4452D272D57003DF295 /* Dash */ = {
+		00E51AA12D4A8AF600AC2F2D /* Error 37 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				0098B4562D272E1F003DF295 /* Exceptions for "Dash" folder in "Dash" target */,
+				00E51AC42D4A920B00AC2F2D /* Exceptions for "Error 37" folder in "Error 37" target */,
 			);
-			path = Dash;
-			sourceTree = "<group>";
-		};
-		00AD25C82D36DF1D005EC718 /* Fonts */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				00AD25CB2D36E04C005EC718 /* Exceptions for "Fonts" folder in "Copy Files" phase from "Dash" target */,
-			);
-			path = Fonts;
+			path = "Error 37";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0098B4402D272D57003DF295 /* Frameworks */ = {
+		00E51A9C2D4A8AF600AC2F2D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,19 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0098B43A2D272D57003DF295 = {
+		00E51A962D4A8AF600AC2F2D = {
 			isa = PBXGroup;
 			children = (
-				00AD25C82D36DF1D005EC718 /* Fonts */,
-				0098B4452D272D57003DF295 /* Dash */,
-				0098B4442D272D57003DF295 /* Products */,
+				00E51AA12D4A8AF600AC2F2D /* Error 37 */,
+				00E51AA02D4A8AF600AC2F2D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0098B4442D272D57003DF295 /* Products */ = {
+		00E51AA02D4A8AF600AC2F2D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0098B4432D272D57003DF295 /* Dash.app */,
+				00E51A9F2D4A8AF600AC2F2D /* Error 37.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,66 +61,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0098B4422D272D57003DF295 /* Dash */ = {
+		00E51A9E2D4A8AF600AC2F2D /* Error 37 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0098B4522D272D59003DF295 /* Build configuration list for PBXNativeTarget "Dash" */;
+			buildConfigurationList = 00E51AAE2D4A8AF800AC2F2D /* Build configuration list for PBXNativeTarget "Error 37" */;
 			buildPhases = (
-				0098B43F2D272D57003DF295 /* Sources */,
-				0098B4402D272D57003DF295 /* Frameworks */,
-				0098B4412D272D57003DF295 /* Resources */,
-				00AD25C92D36E015005EC718 /* CopyFiles */,
+				00E51A9B2D4A8AF600AC2F2D /* Sources */,
+				00E51A9C2D4A8AF600AC2F2D /* Frameworks */,
+				00E51A9D2D4A8AF600AC2F2D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0098B4452D272D57003DF295 /* Dash */,
-				00AD25C82D36DF1D005EC718 /* Fonts */,
+				00E51AA12D4A8AF600AC2F2D /* Error 37 */,
 			);
-			name = Dash;
+			name = "Error 37";
 			packageProductDependencies = (
 			);
-			productName = Dash;
-			productReference = 0098B4432D272D57003DF295 /* Dash.app */;
+			productName = "Error 37";
+			productReference = 00E51A9F2D4A8AF600AC2F2D /* Error 37.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0098B43B2D272D57003DF295 /* Project object */ = {
+		00E51A972D4A8AF600AC2F2D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					0098B4422D272D57003DF295 = {
+					00E51A9E2D4A8AF600AC2F2D = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = 0098B43E2D272D57003DF295 /* Build configuration list for PBXProject "Dash" */;
+			buildConfigurationList = 00E51A9A2D4A8AF600AC2F2D /* Build configuration list for PBXProject "Error 37" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 0098B43A2D272D57003DF295;
+			mainGroup = 00E51A962D4A8AF600AC2F2D;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 0098B4442D272D57003DF295 /* Products */;
+			productRefGroup = 00E51AA02D4A8AF600AC2F2D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0098B4422D272D57003DF295 /* Dash */,
+				00E51A9E2D4A8AF600AC2F2D /* Error 37 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0098B4412D272D57003DF295 /* Resources */ = {
+		00E51A9D2D4A8AF600AC2F2D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -161,7 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0098B43F2D272D57003DF295 /* Sources */ = {
+		00E51A9B2D4A8AF600AC2F2D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -171,7 +138,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0098B4502D272D59003DF295 /* Debug */ = {
+		00E51AAC2D4A8AF800AC2F2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +199,7 @@
 			};
 			name = Debug;
 		};
-		0098B4512D272D59003DF295 /* Release */ = {
+		00E51AAD2D4A8AF800AC2F2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,23 +252,23 @@
 			};
 			name = Release;
 		};
-		0098B4532D272D59003DF295 /* Debug */ = {
+		00E51AAF2D4A8AF800AC2F2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Dash/Dash.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Error 37/Error_37.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dash/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Error 37/Preview Content\"";
 				DEVELOPMENT_TEAM = 33NUGZ4GWE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Dash/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "2D Dash";
+				INFOPLIST_FILE = "Error-37-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Error 37";
 				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -310,16 +277,16 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.2D-Dash";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrwells.Error37;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -328,27 +295,27 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 17.6;
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		0098B4542D272D59003DF295 /* Release */ = {
+		00E51AB02D4A8AF800AC2F2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Dash/Dash.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Error 37/Error_37.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_ASSET_PATHS = "\"Dash/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Error 37/Preview Content\"";
 				DEVELOPMENT_TEAM = 33NUGZ4GWE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Dash/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "2D Dash";
+				INFOPLIST_FILE = "Error-37-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Error 37";
 				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -357,16 +324,16 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.2D-Dash";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calebrwells.Error37;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -375,32 +342,32 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 17.6;
-				XROS_DEPLOYMENT_TARGET = 2.0;
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0098B43E2D272D57003DF295 /* Build configuration list for PBXProject "Dash" */ = {
+		00E51A9A2D4A8AF600AC2F2D /* Build configuration list for PBXProject "Error 37" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0098B4502D272D59003DF295 /* Debug */,
-				0098B4512D272D59003DF295 /* Release */,
+				00E51AAC2D4A8AF800AC2F2D /* Debug */,
+				00E51AAD2D4A8AF800AC2F2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0098B4522D272D59003DF295 /* Build configuration list for PBXNativeTarget "Dash" */ = {
+		00E51AAE2D4A8AF800AC2F2D /* Build configuration list for PBXNativeTarget "Error 37" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0098B4532D272D59003DF295 /* Debug */,
-				0098B4542D272D59003DF295 /* Release */,
+				00E51AAF2D4A8AF800AC2F2D /* Debug */,
+				00E51AB02D4A8AF800AC2F2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 0098B43B2D272D57003DF295 /* Project object */;
+	rootObject = 00E51A972D4A8AF600AC2F2D /* Project object */;
 }

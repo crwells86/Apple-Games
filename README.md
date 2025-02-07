@@ -11,4 +11,4 @@ Links:
 
 [LinkedIn](https://www.linkedin.com/in/caleb-wells-38420911a/)
 
-[App Store](https://apps.apple.com/se/developer/caleb-wells/id833185564)
+[App Store](https://apps.apple.com/us/developer/caleb-wells/id833185564)

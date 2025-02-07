@@ -73,7 +73,14 @@ import AVFoundation
     func jump() {
         if !isJumping {
             isJumping = true
-            let jumpImpulse = CGVector(dx: 0, dy: 96)
+            
+            var dyJumpImpulse = 96
+            
+            #if os(tvOS)
+            dyJumpImpulse = 112
+            #endif
+            
+            let jumpImpulse = CGVector(dx: 0, dy: dyJumpImpulse)
             player.physicsBody?.applyImpulse(jumpImpulse)
         }
     }
