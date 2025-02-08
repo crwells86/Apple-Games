@@ -27,6 +27,11 @@ import AVFAudio
     override init() {
         super.init()
         background.contents = colorForPlatform(Color(.black))
+        
+        // Enable fog
+        fogColor = colorForPlatform(.black) // Adjust color as needed
+        fogStartDistance = 3.0   // Distance at which fog starts appearing
+        fogEndDistance = 6.0    // Distance at which objects are fully obscured by fog
     }
     
     required init?(coder: NSCoder) {
@@ -57,10 +62,10 @@ import AVFAudio
     func loadLevel() {
         guard !levels.isEmpty else { return }
         
-        if levels.count > 2 {
-            levels.removeFirst()
-            levelController?.startProceduralLevelGeneration()
-        }
+//        if levels.count > 2 {
+//            levels.removeFirst()
+//            levelController?.startProceduralLevelGeneration()
+//        }
         
         // Pick a random level index, ensuring it is not the same as the last loaded level
         var randomIndex: Int
@@ -72,8 +77,8 @@ import AVFAudio
         levelController?.clearLevel()
         
         // Load the random level
-        let selectedLevel = levels[randomIndex]
-        levelController?.addLevel(from: selectedLevel, currentLevel: randomIndex)
+        let selectedLevel = levels[0] // [randomIndex]
+        levelController?.addLevel(from: selectedLevel, currentLevel: 0) // randomIndex)
         
         // Update the grid map with the level data
         gridMap = selectedLevel
