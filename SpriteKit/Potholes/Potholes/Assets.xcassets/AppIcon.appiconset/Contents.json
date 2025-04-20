@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "pothole icon.png",
+      "filename" : "test2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "pothole icon 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +24,6 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "pothole icon 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
