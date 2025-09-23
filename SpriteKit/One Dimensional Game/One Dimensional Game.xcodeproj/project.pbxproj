@@ -6,19 +6,117 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		009CBD172DB59CD800E1DD68 /* 1D Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 009CBD162DB59CD800E1DD68 /* 1D Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		009CBD182DB59CD800E1DD68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00DFDA3F2D3DA24400CE373F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 009CBD152DB59CD800E1DD68;
+			remoteInfo = "1D Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		009CBD242DB59CDA00E1DD68 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				009CBD172DB59CD800E1DD68 /* 1D Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		009CBD112DB59CD800E1DD68 /* 1D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		009CBD162DB59CD800E1DD68 /* 1D Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "1D Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DFDA472D3DA24400CE373F /* One Dimensional Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One Dimensional Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		009CBD292DB59D3C00E1DD68 /* Exceptions for "One Dimensional Game" folder in "1D Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Controllers/GameCenterController.swift,
+				Controllers/GameSceneController.swift,
+				"Extensions/View+Font.swift",
+				Models/CollisionTypes.swift,
+				Models/GameState.swift,
+				Models/TileType.swift,
+				Views/ContentView.swift,
+				Views/GameOverView.swift,
+				Views/GameView.swift,
+				Views/MainMenuView.swift,
+			);
+			target = 009CBD152DB59CD800E1DD68 /* 1D Watch App */;
+		};
+		00F7FBEC2E7DDFCA00A8B6B4 /* Exceptions for "One Dimensional Game" folder in "1D" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+			);
+			target = 009CBD102DB59CD800E1DD68 /* 1D */;
+		};
+		00F7FC272E7F52A800A8B6B4 /* Exceptions for "1D Watch App" folder in "1D Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"-D-Watch-App-Info.plist",
+			);
+			target = 009CBD152DB59CD800E1DD68 /* 1D Watch App */;
+		};
+		00F7FC2C2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "One Dimensional Game" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Fonts/04B_03__.TTF,
+			);
+			target = 00DFDA462D3DA24400CE373F /* One Dimensional Game */;
+		};
+		00F7FC2D2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "1D" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Fonts/04B_03__.TTF,
+			);
+			target = 009CBD102DB59CD800E1DD68 /* 1D */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		009CBD1A2DB59CD800E1DD68 /* 1D Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				00F7FC2C2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "One Dimensional Game" target */,
+				00F7FC2D2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "1D" target */,
+				00F7FC272E7F52A800A8B6B4 /* Exceptions for "1D Watch App" folder in "1D Watch App" target */,
+			);
+			path = "1D Watch App";
+			sourceTree = "<group>";
+		};
 		00DFDA492D3DA24400CE373F /* One Dimensional Game */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				00F7FBEC2E7DDFCA00A8B6B4 /* Exceptions for "One Dimensional Game" folder in "1D" target */,
+				009CBD292DB59D3C00E1DD68 /* Exceptions for "One Dimensional Game" folder in "1D Watch App" target */,
+			);
 			path = "One Dimensional Game";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		009CBD132DB59CD800E1DD68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00DFDA442D3DA24400CE373F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				00DFDA492D3DA24400CE373F /* One Dimensional Game */,
+				009CBD1A2DB59CD800E1DD68 /* 1D Watch App */,
 				00DFDA482D3DA24400CE373F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				00DFDA472D3DA24400CE373F /* One Dimensional Game.app */,
+				009CBD112DB59CD800E1DD68 /* 1D.app */,
+				009CBD162DB59CD800E1DD68 /* 1D Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +149,47 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		009CBD102DB59CD800E1DD68 /* 1D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 009CBD252DB59CDA00E1DD68 /* Build configuration list for PBXNativeTarget "1D" */;
+			buildPhases = (
+				009CBD0F2DB59CD800E1DD68 /* Resources */,
+				009CBD242DB59CDA00E1DD68 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				009CBD192DB59CD800E1DD68 /* PBXTargetDependency */,
+			);
+			name = 1D;
+			packageProductDependencies = (
+			);
+			productName = 1D;
+			productReference = 009CBD112DB59CD800E1DD68 /* 1D.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		009CBD152DB59CD800E1DD68 /* 1D Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 009CBD212DB59CDA00E1DD68 /* Build configuration list for PBXNativeTarget "1D Watch App" */;
+			buildPhases = (
+				009CBD122DB59CD800E1DD68 /* Sources */,
+				009CBD132DB59CD800E1DD68 /* Frameworks */,
+				009CBD142DB59CD800E1DD68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				009CBD1A2DB59CD800E1DD68 /* 1D Watch App */,
+			);
+			name = "1D Watch App";
+			packageProductDependencies = (
+			);
+			productName = "1D Watch App";
+			productReference = 009CBD162DB59CD800E1DD68 /* 1D Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		00DFDA462D3DA24400CE373F /* One Dimensional Game */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00DFDA562D3DA24500CE373F /* Build configuration list for PBXNativeTarget "One Dimensional Game" */;
@@ -77,9 +219,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					009CBD102DB59CD800E1DD68 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					009CBD152DB59CD800E1DD68 = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					00DFDA462D3DA24400CE373F = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -100,11 +248,27 @@
 			projectRoot = "";
 			targets = (
 				00DFDA462D3DA24400CE373F /* One Dimensional Game */,
+				009CBD102DB59CD800E1DD68 /* 1D */,
+				009CBD152DB59CD800E1DD68 /* 1D Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		009CBD0F2DB59CD800E1DD68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		009CBD142DB59CD800E1DD68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00DFDA452D3DA24400CE373F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +279,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		009CBD122DB59CD800E1DD68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		00DFDA432D3DA24400CE373F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +295,107 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		009CBD192DB59CD800E1DD68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 009CBD152DB59CD800E1DD68 /* 1D Watch App */;
+			targetProxy = 009CBD182DB59CD800E1DD68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		009CBD222DB59CDA00E1DD68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 33NUGZ4GWE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-D-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = 1D;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.-D.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Debug;
+		};
+		009CBD232DB59CDA00E1DD68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 33NUGZ4GWE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-D-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = 1D;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.-D.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Release;
+		};
+		009CBD262DB59CDA00E1DD68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 33NUGZ4GWE;
+				INFOPLIST_KEY_CFBundleDisplayName = 1D;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.-D";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		009CBD272DB59CDA00E1DD68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 33NUGZ4GWE;
+				INFOPLIST_KEY_CFBundleDisplayName = 1D;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.-D";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		00DFDA542D3DA24500CE373F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -252,28 +523,35 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "One-Dimensional-Game-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "1D Dash";
+				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.One-Dimensional-Game";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 2.6;
+				PRODUCT_BUNDLE_IDENTIFIER = OneDash2024;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TVOS_DEPLOYMENT_TARGET = 17.6;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
@@ -291,28 +569,35 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "One-Dimensional-Game-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "1D Dash";
+				INFOPLIST_KEY_GCSupportsControllerUserInteraction = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrwells.One-Dimensional-Game";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 2.6;
+				PRODUCT_BUNDLE_IDENTIFIER = OneDash2024;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2,3,7";
+				TVOS_DEPLOYMENT_TARGET = 17.6;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
@@ -320,6 +605,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		009CBD212DB59CDA00E1DD68 /* Build configuration list for PBXNativeTarget "1D Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				009CBD222DB59CDA00E1DD68 /* Debug */,
+				009CBD232DB59CDA00E1DD68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		009CBD252DB59CDA00E1DD68 /* Build configuration list for PBXNativeTarget "1D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				009CBD262DB59CDA00E1DD68 /* Debug */,
+				009CBD272DB59CDA00E1DD68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		00DFDA422D3DA24400CE373F /* Build configuration list for PBXProject "One Dimensional Game" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -5,14 +5,14 @@ struct MainMenuView: View {
     
     var body: some View {
         VStack {
-            Text("2D Dash")
-//                .retroFont(size: 87)
+            Text("1D Dash")
+                .retroFont(style: .largeTitle)
             
             Button {
                 gameSceneController.startGame()
             } label: {
                 Text("Play")
-//                    .retroFont(style: .largeTitle)
+                    .retroFont(style: .title)
             }
             .padding()
         }
