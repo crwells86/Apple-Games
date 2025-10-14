@@ -64,13 +64,6 @@
 			);
 			target = 009CBD102DB59CD800E1DD68 /* 1D */;
 		};
-		00F7FC272E7F52A800A8B6B4 /* Exceptions for "1D Watch App" folder in "1D Watch App" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"-D-Watch-App-Info.plist",
-			);
-			target = 009CBD152DB59CD800E1DD68 /* 1D Watch App */;
-		};
 		00F7FC2C2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "One Dimensional Game" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -93,7 +86,6 @@
 			exceptions = (
 				00F7FC2C2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "One Dimensional Game" target */,
 				00F7FC2D2E7F53D500A8B6B4 /* Exceptions for "1D Watch App" folder in "1D" target */,
-				00F7FC272E7F52A800A8B6B4 /* Exceptions for "1D Watch App" folder in "1D Watch App" target */,
 			);
 			path = "1D Watch App";
 			sourceTree = "<group>";
@@ -519,7 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"One Dimensional Game/Preview Content\"";
-				DEVELOPMENT_TEAM = 33NUGZ4GWE;
+				DEVELOPMENT_TEAM = G555YRQRA7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -565,7 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"One Dimensional Game/Preview Content\"";
-				DEVELOPMENT_TEAM = 33NUGZ4GWE;
+				DEVELOPMENT_TEAM = G555YRQRA7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

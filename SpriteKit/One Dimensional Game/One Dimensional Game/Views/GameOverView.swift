@@ -5,14 +5,14 @@ struct GameOverView: View {
     @AppStorage("gameHighScore") var highScore = 0
     @Binding var gameSceneController: GameSceneController
     
-#if !os(watchOS)
+#if os(iOS) || os(macOS) || os(tvOS) || os(visionOS)
     var gameCenterController = GameCenterController.shared
     let accessPoint = GKAccessPoint.shared
 #endif
     
     var body: some View {
         ZStack {
-            Color(.red)
+            Color(.black)
                 .ignoresSafeArea()
             
             ScrollView {
@@ -21,7 +21,7 @@ struct GameOverView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     
-                    HStack {
+                    VStack {
                         Text("Score: \(gameSceneController.score)")
                             .font(.title)
                             .fontWeight(.semibold)
@@ -34,10 +34,15 @@ struct GameOverView: View {
                     }
                     .padding(.horizontal)
                     
-                    HStack {
+                    VStack {
+//                        Button("Restart Game") {
+//                            withAnimation {
+//                                gameSceneController.startGame()
+//                            }
+//                        }
                         Button("Restart Game") {
                             withAnimation {
-    //                            gameSceneController.gameState = .playing
+                                gameSceneController = GameSceneController() // ← Create new instance
                                 gameSceneController.startGame()
                             }
                         }
